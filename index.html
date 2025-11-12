@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxford Sofa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="slider()">
+    <div class="banner">
+        <div class="slider">
+            <img src="sofas/bg-1.jpg" id="slideimg">
+        </div>
+
+        <div class="overlay">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="sofas/logo.png" alt="Oxford Sofa Logo">
+                </div>
+            </div>
+
+            <div class="content">
+                <h1>Let's Start</h1>
+                <h3>Step into comfort. Welcome to Oxford Sofa.</h3>  
+                <div>
+                    <a href="./oxforad sofa web/index.html"><button type="button">Visit Site</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+            
+<script>
+let images = [
+    "sofas/bg-4.jpg",
+    "sofas/bg-5.jpg",
+    "sofas/bg-6.jpg",
+    "sofas/bg-7.jpg",
+    "sofas/bg-8.jpg"
+];
+
+let i = 0;
+let slideImg = document.getElementById("slideimg");
+
+// pehli image turant set
+slideImg.src = images[i];
+slideImg.style.opacity = 1;
+
+// function to change images smoothly
+function slider() {
+    setInterval(() => {
+        i++;
+        if(i >= images.length) i = 0;
+
+        // create a temporary image to preload
+        let tempImg = new Image();
+        tempImg.src = images[i];
+        tempImg.onload = () => {
+            // fade out current image
+            slideImg.style.transition = "opacity 1s ease-in-out";
+            slideImg.style.opacity = 0;
+
+            // after fade out, change src and fade in
+            setTimeout(() => {
+                slideImg.src = images[i];
+                slideImg.style.opacity = 1;
+            }, 500);
+        }
+
+    }, 4000);
+}
+</script>
+
+
+
+</body>
+</html>
