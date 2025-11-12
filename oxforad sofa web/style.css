@@ -223,12 +223,6 @@ header::after {
     opacity: 0.5;
 }
 
-/* *,
-*::before,
-*::after {
-  box-sizing: border-box;
-} */
-
 .main-section-2 {
   background-color: #131313;
   height: 100vh;
@@ -662,6 +656,8 @@ footer {
 
   .foot-sec-1 {
     gap: 10px;
+    text-align: center;
+    justify-content: center;
   }
 
   .text-box p {
@@ -687,6 +683,37 @@ footer {
 
   .main-section-1 h2 {
     font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .main-sec-3-sec-2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-s3-s2-s1 img {
+    width: 250%;
+  }
+
+  .main-s3-s2-s1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-box {
+    width: 200%;
+  }
+
+  .outer-wrapper {
+    width: 90%;
+  }
+
+
+  .s-wrap {
+    min-height: 300px;
+    height: 100%;
   }
 }
 
