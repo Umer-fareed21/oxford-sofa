@@ -707,6 +707,10 @@ footer {
   .nav-container-1 img {
     gap: 5px;
   }
+
+  .right-menu ul {
+    gap: 5px;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
@@ -718,7 +722,7 @@ footer {
     max-width: 80px;
   }
 
-  .nav-container-1 img {
+  .right-menu ul {
     gap: 5px;
   }
 }
@@ -732,7 +736,7 @@ footer {
     max-width: 50px;
   }
 
-  .nav-container-1 img {
+  .right-menu ul {
     gap: 5px;
   }
   
