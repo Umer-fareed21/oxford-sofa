@@ -94,3 +94,23 @@ button:hover{
     background: #e6e6e6;
     color: #000000;
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .content h1 {
+        font-size: 26px;
+    }
+
+    .content {
+        margin-top: 30px;
+    }
+
+    .navbar {
+        margin-bottom: 0px;
+    }
+
+    button {
+        width: 150px;
+        padding: 10px 0px;
+    }
+}
