@@ -291,26 +291,6 @@ const products = [
             materials: "Wood & Fabric",
             custom: "Choose fabric"
         }
-    },
-
-    {
-        id: 205,
-        section: "Luxury Sectionals",
-        title: "Luxury Sectionals",
-        price: "$1,599",
-        desc: "A minimal and elegant sofa.",
-        images: [
-            "./Article-brand/sectionals/sectional-5/sectional-5-img-1.webp",
-            "./Article-brand/sectionals/sectional-5/sectional-5-img-2.webp",
-            "./Article-brand/sectionals/sectional-5/sectional-5-img-3.webp",
-            "./Article-brand/sectionals/sectional-5/sectional-5-img-4.webp",
-            "./Article-brand/sectionals/sectional-5/sectional-5-img-5.webp"
-        ],
-        specs: {
-            dimensions: "W:200cm D:85cm H:80cm",
-            materials: "Wood & Fabric",
-            custom: "Choose fabric"
-        }
     }
 
     
