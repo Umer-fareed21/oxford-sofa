@@ -120,7 +120,7 @@
                 <h2>Get In Touch</h2>
                 <p class="cl-sub">We’ll be happy to answer your questions.</p>
 
-                <form action="#">
+                <!-- <form action="#">
                     <div class="input-box">
                         <label>Name</label>
                         <input type="text" placeholder="Enter your name">
@@ -142,6 +142,34 @@
                     </div>
 
                     <button class="contact-btn">Send Message</button>
+                </form> -->
+
+                <form id="contactForm">
+                    <div class="input-box">
+                        <label>Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name">
+                        <span class="error-message" id="name-error"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Phone</label>
+                        <input type="number" id="phone" name="phone" placeholder="Enter phone number">
+                        <span class="error-message" id="phone-error"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Message</label>
+                        <textarea rows="5" id="message" name="message" placeholder="Write your message..."></textarea>
+                        <span class="error-message" id="message-error"></span>
+                    </div>
+
+                    <button type="submit" class="contact-btn">Send Message</button>
                 </form>
             </div>
 
@@ -297,6 +325,89 @@
             });
         });
 
+    </script>
+
+    <script>
+        /* --- CONTACT FORM VALIDATION SCRIPT --- */
+
+        // Email validation ke liye simple Regex (Regular Expression)
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // ... existing mobile menu code ...
+            // ... (Aapka existing DOMContentLoaded code yahan hai) ...
+
+            // --- NAYA FORM VALIDATION CODE YAHAN SE SHURU HOTA HAI ---
+
+            const form = document.getElementById('contactForm');
+
+            if (form) {
+                form.addEventListener('submit', function (event) {
+                    // Default form submission ko roko
+                    event.preventDefault();
+
+                    // Sabhi fields ko select karo
+                    const name = document.getElementById('name');
+                    const phone = document.getElementById('phone');
+                    const email = document.getElementById('email');
+                    const message = document.getElementById('message');
+
+                    let formIsValid = true; // Maan lete hain form sahi hai
+
+                    // Har field ko validate karne wala function
+                    function validateField(inputElement, errorId, validationCondition, errorMessage) {
+                        const errorSpan = document.getElementById(errorId);
+
+                        // Pehle se lagi hui classes hatao
+                        inputElement.classList.remove('error');
+                        errorSpan.textContent = '';
+
+                        if (validationCondition(inputElement.value.trim())) {
+                            // Agar validation fail ho jaye
+                            inputElement.classList.add('error');
+                            errorSpan.textContent = errorMessage;
+                            formIsValid = false; // Form ko invalid mark kar do
+                        }
+                    }
+
+                    // 1. Name Validation
+                    validateField(name, 'name-error', (value) => value === '', 'Name field is required.');
+
+                    // 2. Phone Validation (Simple Empty Check)
+                    validateField(phone, 'phone-error', (value) => value === '', 'Phone number is required.');
+
+                    // 3. Email Validation
+                    validateField(email, 'email-error', (value) => value === '', 'Email address required.');
+
+                    // Agar Email khali nahi hai, toh uska format bhi check karo
+                    if (email.value.trim() !== '' && !isValidEmail(email.value.trim())) {
+                        const errorSpan = document.getElementById('email-error');
+                        email.classList.add('error');
+                        errorSpan.textContent = 'Enter a valid e-mail address';
+                        formIsValid = false;
+                    }
+
+                    // 4. Message Validation
+                    validateField(message, 'message-error', (value) => value === '', 'Message field required.');
+
+
+                    // Agar form theek hai to submit karo (Ya success message dikhao)
+                    if (formIsValid) {
+                        // Yahan woh code aayega jo form ko server par bhejega (Aapko backend code lagana hoga)
+
+                        alert('Your message has been successfully sent! Thank you.');
+
+                        // Form ko khali kar do (Reset)
+                        form.reset();
+                    }
+
+                });
+            }
+            // --- NAYA FORM VALIDATION CODE YAHAN TAK THA ---
+        });
     </script>
 </body>
 

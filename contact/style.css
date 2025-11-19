@@ -315,6 +315,23 @@ body {
     }
 }
 
+/* --- FORM VALIDATION STYLES --- */
+.error-message {
+    color: #cc0000;
+    /* Laal rang error ke liye */
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+    display: block;
+    /* Taa-ke poori width le */
+}
+
+/* Jab input mein error ho to border bhi laal kar dein */
+.input-box input.error,
+.input-box textarea.error {
+    border-color: #cc0000 !important;
+}
+
 
 /* footer */
 footer {
