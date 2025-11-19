@@ -954,6 +954,10 @@ footer {
     z-index: 90;
     /* Icon se neeche */
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    /* 👇 YEH DO LINES ZAROORI HAIN 👇 */
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    /* 👆 YEH DO LINES ZAROORI HAIN 👆 */
   }
 
   /* Jab menu active ho to slide-in karo */

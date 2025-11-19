@@ -423,76 +423,76 @@ footer {
 }
 
 @media screen and (min-width: 320px) and (max-width: 600px) {
-  .nav-container-2 .menu ul li a{
-    font-size: 10px;
-  }
+    .nav-container-2 .menu ul li a {
+        font-size: 10px;
+    }
 
-  .nav-ul-1 {
-    gap: 10px;
-  }
+    .nav-ul-1 {
+        gap: 10px;
+    }
 
-  .right-menu ul li a img {
-    max-width: 12px;
-  }
+    .right-menu ul li a img {
+        max-width: 12px;
+    }
 
-  .nav-container-1 img {
-    gap: 5px;
-  }
+    .nav-container-1 img {
+        gap: 5px;
+    }
 
-  .right-menu ul {
-    gap: 5px;
-  }
+    .right-menu ul {
+        gap: 5px;
+    }
 }
 
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
-  .right-menu ul li a img {
-    max-width: 12px;
-  }
+    .right-menu ul li a img {
+        max-width: 12px;
+    }
 
-  .nav-container-1 img {
-    max-width: 80px;
-  }
+    .nav-container-1 img {
+        max-width: 80px;
+    }
 
-  .right-menu ul {
-    gap: 5px;
-  }
+    .right-menu ul {
+        gap: 5px;
+    }
 }
 
 @media screen and (min-width: 320px) and (max-width: 375px) {
-  .right-menu ul li a img {
-    max-width: 12px;
-  }
+    .right-menu ul li a img {
+        max-width: 12px;
+    }
 
-  .nav-container-1 img {
-    max-width: 50px;
-  }
+    .nav-container-1 img {
+        max-width: 50px;
+    }
 
-  .right-menu ul {
-    gap: 5px;
-  }
-  
-  .nav-container-2 .menu ul li a{
-    font-size: 8px;
-  }
+    .right-menu ul {
+        gap: 5px;
+    }
+
+    .nav-container-2 .menu ul li a {
+        font-size: 8px;
+    }
 }
 
 @media screen and (min-width: 320px) and (max-width: 320px) {
-  .right-menu ul li a img {
-    max-width: 12px;
-  }
+    .right-menu ul li a img {
+        max-width: 12px;
+    }
 
-  .nav-container-1 img {
-    max-width: 50px;
-  }
+    .nav-container-1 img {
+        max-width: 50px;
+    }
 
-  .right-menu ul {
-    gap: 5px;
-  }
-  
-  .nav-container-2 .menu ul li a{
-    font-size: 6px;
-  }
+    .right-menu ul {
+        gap: 5px;
+    }
+
+    .nav-container-2 .menu ul li a {
+        font-size: 6px;
+    }
 }
 
 @media screen and (min-width: 320px) and (max-width: 320px) {
@@ -510,5 +510,158 @@ footer {
         gap: 30px;
         justify-content: center;
     }
+
+}
+
+
+
+
+
+
+
+/* --- BURGER MENU STYLING --- */
+/* Burger Icon ki basic styling */
+.burger-icon {
+    display: none;
+    /* Default mein chhupa rahega */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 25px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+    /* Sabse upar */
+}
+
+.burger-icon .line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    /* Icon ka default color */
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+}
+
+/* Burger Icon active hone par X mein badalna */
+.burger-icon.active .line:nth-child(1) {
+    transform: rotate(45deg);
+    background: #000000;
+    /* Active hone par color */
+}
+
+.burger-icon.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-icon.active .line:nth-child(3) {
+    transform: rotate(-45deg);
+    background: #000000;
+    /* Active hone par color */
+}
+
+
+/* --- MOBILE SPECIFIC STYLES (Jab screen choti ho) --- */
+@media (max-width: 768px) {
+
+    /* Burger Icon ko chote screen par dikhao */
+    .burger-icon {
+        display: flex;
+    }
+
+    /* nav-container-2 (Main Menu) ko mobile ke liye setup karna */
+    .nav-container-2 {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 70%;
+        /* Aap apne hisab se width change kar sakte hain */
+        background-color: #e6e6e6;
+        /* Aapki demand ke mutabiq background color */
+        padding-top: 90px;
+        transform: translateX(100%);
+        /* Right side se screen se bahar */
+        transition: transform 0.3s ease-in-out;
+        z-index: 90;
+        /* Icon se neeche */
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        /* 👇 YEH DO LINES ZAROORI HAIN 👇 */
+        overflow-y: auto;
+        overflow-x: hidden;
+        /* 👆 YEH DO LINES ZAROORI HAIN 👆 */
+    }
+
+    /* Jab menu active ho to slide-in karo */
+    .nav-container-2.active {
+        transform: translateX(0);
+        /* Screen par wapas laao */
+    }
+
+    /* Menu items ko vertical (khada) dikhana */
+    .nav-ul-1 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding-left: 20px;
+    }
+
+    /* Menu links ka color aur style */
+    .nav-container-2 .menu ul li a {
+        color: #000000;
+        /* Aapki demand ke mutabiq item color */
+        padding: 15px 0;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Dropdown menu ko mobile view ke liye adjust karna */
+    .dropdown-menu {
+        position: static;
+        /* Fixed/Absolute se hata kar static kar denge */
+        width: 100%;
+        padding: 10px 20px;
+        background: #f0f0f0;
+        /* Thoda alag shade de sakte hain */
+        box-shadow: none;
+        border-top: none;
+
+        /* Dropdown ko initially chupa do aur JavaScript se dikhao */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    .dropdown-menu.active {
+        max-height: 1200px;
+        /* Ya isse zyada, taake saara content zaroor dikhe */
+        /* Pichle 500px ko 1200px se badal dein */
+
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /* Zaroori: Mobile mein display flex hata kar block/column kar dein */
+    .dropdown-menu {
+        flex-direction: column;
+        /* Confirm karein yeh set ho */
+        align-items: center;
+        /* Agar zaroori ho */
+        display: flex;
+        /* Active/inactive state se pehle yahan display zaroori hai */
+    }
+
+    .dropdown-section {
+        width: 100%;
+        /* Sections ko poori jagah mil jaye */
+        text-align: center;
+        /* Content ko center karne ke liye */
+    }
+
 
 }

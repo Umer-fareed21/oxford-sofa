@@ -16,7 +16,7 @@
             <img src="../sofas/logo.png" alt="logo" />
         </div>
 
-        <div class="nav-container-2">
+        <div class="nav-container-2" id="mobile-menu">
             <div class="menu">
                 <ul class="nav-ul-1">
                     <li><a href="../oxforad sofa web/">HOME</a></li>
@@ -99,6 +99,12 @@
                 </ul>
             </div>
         </div>
+
+        <button class="burger-icon" id="burger-toggle">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
     </div>
 
 
@@ -184,6 +190,68 @@
     </footer>
 
     <script src="product.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerToggle = document.getElementById('burger-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const dropdownToggle = document.querySelector('.dropdown .product-a'); // PRODUCTS link
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            // 1. Burger Menu Toggle Functionality
+            burgerToggle.addEventListener('click', function () {
+                // Burger icon par 'active' class lagayega (X banane ke liye)
+                burgerToggle.classList.toggle('active');
+                // Mobile menu container par 'active' class lagayega (Slide-in/out ke liye)
+                mobileMenu.classList.toggle('active');
+
+                // 👇 NAYA CODE YAHAN ADD KAREN 👇
+                // Jab menu khule, to body scroll ko rok do
+                if (mobileMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = ''; // Ya 'auto'
+                }
+                // 👆 NAYA CODE YAHAN ADD KAREN 👆
+            });
+
+            // 2. Mobile Dropdown Toggle Functionality
+            // Yeh zaroori hai kyunki mobile mein hover kaam nahi karega
+            if (dropdownToggle && dropdownMenu) {
+                dropdownToggle.addEventListener('click', function (event) {
+                    // Dropdown link ko click karne par page reload hone se roken
+                    event.preventDefault();
+
+                    // Dropdown menu ko mobile mein toggle karna
+                    dropdownMenu.classList.toggle('active');
+                });
+            }
+
+            // Optional: Agar koi link click ho to menu band ho jaana chahiye
+            // Naya Logic: Menu ko band karne se pehle check karein
+            mobileMenu.querySelectorAll('a').forEach(link => {
+
+                // Sirf woh links jo 'product-a' class nahi rakhte, un par yeh function chalao.
+                // Yani, agar link PRODUCTS ka hai, toh menu band mat karo.
+                if (!link.classList.contains('product-a')) {
+                    link.addEventListener('click', function () {
+                        // PRODUCTS ke alawa koi aur link click hua hai, toh menu band kar do
+                        setTimeout(() => {
+                            burgerToggle.classList.remove('active');
+                            mobileMenu.classList.remove('active');
+
+                            // Dropdown ko bhi band karna behtar hai jab koi dusra link click ho
+                            const dropdownMenu = document.querySelector('.dropdown-menu');
+                            if (dropdownMenu) {
+                                dropdownMenu.classList.remove('active');
+                            }
+                        }, 50);
+                    });
+                }
+            });
+        });
+
+    </script>
 
 </body>
 
