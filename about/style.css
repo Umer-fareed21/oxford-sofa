@@ -405,3 +405,21 @@ footer {
         padding: 0px 30px;
     }
 }
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+
+    .dropdown-menu {
+        gap: 20px;
+        justify-content: center;
+    }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+
+    .dropdown-menu {
+        gap: 40px;
+        justify-content: center;
+    }
+
+}

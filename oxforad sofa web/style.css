@@ -726,6 +726,11 @@ footer {
     min-height: 300px;
     height: 100%;
   }
+
+  .dropdown-menu {
+    gap: 40px;
+    justify-content: center;
+  }
 }
 
 
@@ -798,5 +803,10 @@ footer {
   
   .nav-container-2 .menu ul li a{
     font-size: 6px;
+  }
+
+  .dropdown-menu {
+    gap: 20px;
+    justify-content: center;
   }
 }
