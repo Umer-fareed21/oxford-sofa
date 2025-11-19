@@ -728,7 +728,7 @@ footer {
   }
 
   .dropdown-menu {
-    gap: 40px;
+    gap: 30px;
     justify-content: center;
   }
 }
