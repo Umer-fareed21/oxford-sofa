@@ -535,9 +535,7 @@ footer {
         gap: 10px;
     }
 
-    .right-menu ul li a img {
-        max-width: 12px;
-    }
+
 
     .nav-container-1 img {
         gap: 5px;
@@ -549,9 +547,7 @@ footer {
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
-    .right-menu ul li a img {
-        max-width: 12px;
-    }
+
 
     .nav-container-1 img {
         max-width: 80px;
@@ -563,9 +559,6 @@ footer {
 }
 
 @media screen and (min-width: 320px) and (max-width: 375px) {
-    .right-menu ul li a img {
-        max-width: 12px;
-    }
 
     .nav-container-1 img {
         max-width: 50px;
@@ -580,32 +573,6 @@ footer {
     }
 }
 
-@media screen and (min-width: 320px) and (max-width: 320px) {
-    .right-menu ul li a img {
-        max-width: 12px;
-    }
-
-    .nav-container-1 img {
-        max-width: 50px;
-    }
-
-    .right-menu ul {
-        gap: 5px;
-    }
-
-    .nav-container-2 .menu ul li a {
-        font-size: 6px;
-    }
-}
-
-@media screen and (min-width: 320px) and (max-width: 320px) {
-
-    .dropdown-menu {
-        gap: 10px;
-        justify-content: center;
-    }
-
-}
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
 
@@ -614,6 +581,9 @@ footer {
         justify-content: center;
     }
 
+    .right-menu ul li a img {
+        max-width: 22px;
+    }
 }
 
 
@@ -651,7 +621,7 @@ footer {
     display: block;
     width: 100%;
     height: 2px;
-    background: #ffffff;
+    background: #000000;
     /* Icon ka default color */
     border-radius: 10px;
     transition: all 0.3s linear;
@@ -678,6 +648,10 @@ footer {
 
 /* --- MOBILE SPECIFIC STYLES (Jab screen choti ho) --- */
 @media (max-width: 768px) {
+
+    .burger-icon .line {
+        background: #000000 !important;
+    }
 
     /* Burger Icon ko chote screen par dikhao */
     .burger-icon {
@@ -774,5 +748,27 @@ footer {
         /* Content ko center karne ke liye */
     }
 
+    /* 👇 Yahan Naya Code Add Karein 👇 */
+    .nav-container-3 {
+        display: flex;
+        align-items: center;
+    }
 
+    .right-menu ul li a img {
+        filter: invert(0) !important;
+        max-width: 20px;
+    }
+
+    /* 👆 Naya Code Yahan Khatam Hua 👆 */
+
+    .nav-3-burger {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .section-1 {
+        justify-content: space-between;
+        padding: 0px 20px;
+    }
 }

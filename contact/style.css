@@ -540,7 +540,7 @@ footer {
     display: block;
     width: 100%;
     height: 2px;
-    background: #ffffff;
+    background: #000;
     /* Icon ka default color */
     border-radius: 10px;
     transition: all 0.3s linear;
@@ -567,6 +567,10 @@ footer {
 
 /* --- MOBILE SPECIFIC STYLES (Jab screen choti ho) --- */
 @media (max-width: 768px) {
+
+    .burger-icon .line {
+        background: #000000 !important;
+    }
 
     /* Burger Icon ko chote screen par dikhao */
     .burger-icon {

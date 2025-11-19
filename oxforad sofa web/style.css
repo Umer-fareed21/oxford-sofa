@@ -722,48 +722,6 @@ footer {
   margin-top: 10px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 475px) {
-  .text-box a {
-    width: 100px;
-    padding: 5px 0px;
-  }
-
-  .main-sec-3-con h1 {
-    text-align: center;
-    font-size: 30px;
-  }
-
-  .foot-sec-1 {
-    gap: 10px;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .text-box p {
-    font-size: 10px;
-  }
-
-  .main-sec-3-con a {
-    width: 200px;
-  }
-
-  .main-container-2 img {
-    max-width: 150px;
-    width: 100%;
-  }
-
-  .main-section-1 {
-    text-align: center;
-  }
-
-  .main-section-1 p {
-    font-size: 14px;
-  }
-
-  .main-section-1 h2 {
-    font-size: 20px;
-  }
-}
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .main-sec-3-sec-2 {
@@ -789,7 +747,6 @@ footer {
     width: 90%;
   }
 
-
   .s-wrap {
     min-height: 300px;
     height: 100%;
@@ -804,78 +761,75 @@ footer {
 
 @media screen and (min-width: 320px) and (max-width: 600px) {
   .nav-container-2 .menu ul li a {
-    font-size: 10px;
-  }
-
-  .nav-ul-1 {
-    gap: 10px;
-  }
-
-  .right-menu ul li a img {
-    max-width: 12px;
-  }
-
-  .nav-container-1 img {
-    gap: 5px;
+    font-size: 12px;
   }
 
   .right-menu ul {
-    gap: 5px;
+    gap: 10px;
+    align-items: center;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .right-menu ul li a img {
-    max-width: 12px;
+    max-width: 18px;
   }
 
   .nav-container-1 img {
-    max-width: 80px;
+    max-width: 100px;
   }
 
-  .right-menu ul {
-    gap: 5px;
+  .main-container-2 {
+    gap: 30px;
+  }
+
+  .text-box a {
+    width: 140px;
+    padding: 8px 0px;
+  }
+
+  .text-box p {
+    font-size: 13px;
+  }
+
+  .main-container-2 img {
+    max-width: 150px;
+    width: 100%;
+  }
+
+  .main-section-1 {
+    text-align: center;
+  }
+
+  .main-section-1 p {
+    font-size: 14px;
+  }
+
+  .main-section-1 h2 {
+    font-size: 20px;
+  }
+
+  .foot-sec-1 {
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 375px) {
-  .right-menu ul li a img {
-    max-width: 12px;
-  }
-
   .nav-container-1 img {
-    max-width: 50px;
-  }
-
-  .right-menu ul {
-    gap: 5px;
-  }
-
-  .nav-container-2 .menu ul li a {
-    font-size: 8px;
+    max-width: 80px;
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 320px) {
-  .right-menu ul li a img {
-    max-width: 12px;
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .main-section-1 {
+    margin: 40px 0px;
+    padding: 0px 40px;
   }
 
-  .nav-container-1 img {
-    max-width: 50px;
-  }
-
-  .right-menu ul {
-    gap: 5px;
-  }
-
-  .nav-container-2 .menu ul li a {
-    font-size: 6px;
-  }
-
-  .dropdown-menu {
-    gap: 10px;
-    justify-content: center;
+  .main-container-2 a {
+    padding-top: 30px;
   }
 }
 
@@ -904,7 +858,7 @@ footer {
   display: block;
   width: 100%;
   height: 2px;
-  background: #ffffff;
+  background: #000;
   /* Icon ka default color */
   border-radius: 10px;
   transition: all 0.3s linear;
@@ -932,6 +886,10 @@ footer {
 /* --- MOBILE SPECIFIC STYLES (Jab screen choti ho) --- */
 @media (max-width: 768px) {
 
+  .burger-icon .line {
+        background: #000000 !important;
+    }
+
   /* Burger Icon ko chote screen par dikhao */
   .burger-icon {
     display: flex;
@@ -955,8 +913,8 @@ footer {
     /* Icon se neeche */
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
     /* 👇 YEH DO LINES ZAROORI HAIN 👇 */
-    overflow-y: auto; 
-    overflow-x: hidden; 
+    overflow-y: auto;
+    overflow-x: hidden;
     /* 👆 YEH DO LINES ZAROORI HAIN 👆 */
   }
 
@@ -1027,5 +985,14 @@ footer {
     /* Content ko center karne ke liye */
   }
 
+  .nav-3-burger {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 
+  .section-1 {
+    justify-content: space-between;
+    padding: 0px 20px;
+  }
 }
