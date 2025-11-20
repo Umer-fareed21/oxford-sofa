@@ -132,47 +132,64 @@
             alt="">ARTICLE</a>
         <a href=""><img src="images/sofa-3.png" alt="">La-Z-Boy</a>
         <a href=""><img src="images/sofa-4.png" alt="">Joybird</a>
-        <a href=""><img src="images/sofa-5.png" alt="">West Elm</a>
       </div>
+
+      <button class="product-nav-arrow prev-item" data-direction="prev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="product-nav-arrow next-item" data-direction="next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </section>
 
-    <section class="main-section-2">
-      <div class="outer-wrapper">
-        <div class="h1-a">
-          <h1>PRODUCTS</h1>
-          <a href="../Burrow-sofas/product.html">Discover More</a>
-        </div>
-        <div class="s-wrap s-type-1" role="slider">
-          <input type="radio" id="s-1" name="slider-control" checked="checked">
-          <input type="radio" id="s-2" name="slider-control">
-          <input type="radio" id="s-3" name="slider-control">
-          <input type="radio" id="s-4" name="slider-control">
-          <input type="radio" id="s-5" name="slider-control">
-          <ul class="s-content">
-            <li class="s-item s-item-1"></li>
-            <li class="s-item s-item-2"></li>
-            <li class="s-item s-item-3"></li>
-            <li class="s-item s-item-4"></li>
-            <li class="s-item s-item-5"></li>
-          </ul>
-          <div class="s-control">
-            <label class="s-c-1" for="s-1"></label>
-            <label class="s-c-2" for="s-2"></label>
-            <label class="s-c-3" for="s-3"></label>
-            <label class="s-c-4" for="s-4"></label>
-            <label class="s-c-5" for="s-5"></label>
-          </div>
-          <div class="s-nav">
-            <label class="s-nav-1 right" for="s-2"></label>
-            <label class="s-nav-2 left" for="s-1"></label>
-            <label class="s-nav-2 right" for="s-3"></label>
-            <label class="s-nav-3 left" for="s-2"></label>
-            <label class="s-nav-3 right" for="s-4"></label>
-            <label class="s-nav-4 left" for="s-3"></label>
-            <label class="s-nav-4 right" for="s-5"></label>
-            <label class="s-nav-5 left" for="s-4"></label>
+    <section class="modern-full-width-slider">
+      <div class="slider-wrapper">
+        <div class="slider-item" style="background-image: url('images/bg-4.jpg');">
+          <div class="caption">
+            <h2>BURROW | Range Collection</h2>
+            <p>Modular design, endless possibilities.</p>
+            <a href="../Burrow-sofas/product.html" class="slider-btn-a">Explore Sofas</a>
           </div>
         </div>
+
+        <div class="slider-item" style="background-image: url('images/bg-5.jpg');">
+          <div class="caption">
+            <h2>ARTICLE | Sectionals</h2>
+            <p>Curated design for contemporary living.</p>
+            <a href="../Article-sofas/product.html" class="slider-btn-a">View Sectionals</a>
+          </div>
+        </div>
+
+        <div class="slider-item" style="background-image: url('images/bg-6.jpg');">
+          <div class="caption">
+            <h2>La-Z-Boy | Recliners</h2>
+            <p>Unmatched comfort, built for relaxation.</p>
+            <a href="../La-z-boy-sofas/product.html" class="slider-btn-a">Discover Comfort</a>
+          </div>
+        </div>
+
+        <div class="slider-item" style="background-image: url('images/bg-7.jpg');">
+          <div class="caption">
+            <h2>Joybird | Retro Styles</h2>
+            <p>Vibrant colors and unique customization.</p>
+            <a href="../joy-bird-sofa/product.html" class="slider-btn-a">Shop Joybird</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-arrow prev-slide">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="nav-arrow next-slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="nav-dots">
+        <span class="dot active" data-slide-index="0"></span>
+        <span class="dot" data-slide-index="1"></span>
+        <span class="dot" data-slide-index="2"></span>
+        <span class="dot" data-slide-index="3"></span>
+      </div>
     </section>
 
     <section class="main-section-3">
@@ -294,6 +311,7 @@
     changeBackground();
     setInterval(changeBackground, 4000);
   </script>
+
   <script>
     const navbar = document.querySelector('.section-1');
 
@@ -302,6 +320,115 @@
         navbar.classList.add('active');
       } else {
         navbar.classList.remove('active');
+      }
+    });
+  </script>
+
+  <script>
+    // --- NEW MODERN FULL-WIDTH SLIDER JS LOGIC ---
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slider-item');
+    const nextButton = document.querySelector('.next-slide');
+    const prevButton = document.querySelector('.prev-slide');
+    const dotsContainer = document.querySelector('.nav-dots');
+    const dots = document.querySelectorAll('.nav-dots .dot');
+    const totalSlides = slides.length;
+    let currentSlide = 0; // 0 se 3 tak
+
+    function updateSlider() {
+      // Har slide 25% width leta hai (100% / 4 slides = 25%)
+      const offset = currentSlide * -25;
+      sliderWrapper.style.transform = `translateX(${offset}%)`;
+
+      // Dots ko update karna
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentSlide].classList.add('active');
+    }
+
+    // Next button functionality
+    nextButton.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlider();
+    });
+
+    // Previous button functionality
+    prevButton.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    });
+
+    // Dots functionality
+    dots.forEach(dot => {
+      dot.addEventListener('click', (event) => {
+        const slideIndex = parseInt(event.target.dataset.slideIndex);
+        currentSlide = slideIndex;
+        updateSlider();
+      });
+    });
+
+    // Auto-slide (Optional: Har 5 seconds mein slide change hoga)
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlider();
+    }, 5000);
+
+    // Initial setup
+    updateSlider();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const scroller = document.getElementById('product-scroller');
+      const nextBtn = document.querySelector('.next-item');
+      const prevBtn = document.querySelector('.prev-item');
+
+      // Scroll amount set karein (Har click par kitna scroll ho)
+      const scrollAmount = 240; // 220px item width + 20px gap
+
+      if (scroller && nextBtn && prevBtn) {
+
+        // Next button click
+        nextBtn.addEventListener('click', () => {
+          // container ko aage scroll karega
+          scroller.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+          });
+        });
+
+        // Previous button click
+        prevBtn.addEventListener('click', () => {
+          // container ko peeche scroll karega
+          scroller.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+          });
+        });
+
+        // Optional: Agar aap arrows ko tab chhipana/dikhana chahte hain jab scroll end ho jaye.
+        const toggleArrows = () => {
+          if (scroller.scrollLeft === 0) {
+            prevBtn.style.opacity = '0.4';
+            prevBtn.style.cursor = 'default';
+          } else {
+            prevBtn.style.opacity = '1';
+            prevBtn.style.cursor = 'pointer';
+          }
+
+          // Maximum scroll check
+          if (scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1) {
+            nextBtn.style.opacity = '0.4';
+            nextBtn.style.cursor = 'default';
+          } else {
+            nextBtn.style.opacity = '1';
+            nextBtn.style.cursor = 'pointer';
+          }
+        };
+
+        // Scroll event listener
+        scroller.addEventListener('scroll', toggleArrows);
+        window.addEventListener('resize', toggleArrows); // Resize par bhi check karein
+
+        // Page load hone par arrows ki initial state set karein
+        toggleArrows();
       }
     });
   </script>
@@ -366,6 +493,39 @@
       });
     });
 
+  </script>
+
+  <script>
+    // 1. Zaroori elements ko hasil karna
+    const carousel = document.querySelector('.main-container-2');
+    const prevsButton = document.querySelector('.prev-item');
+    const nextsButton = document.querySelector('.next-item');
+
+    // Har item ki width ko calculate karna (Scroll kitna karna hai)
+    // Aapke CSS ke mutabiq, desktop par item ki width 220px + 10px gap hai.
+    const scrollAmount = 230;
+
+    // 2. Next button ka function
+    nextsButton.addEventListener('click', () => {
+      // Scroll left se aage ki taraf (positive value)
+      carousel.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth' // Smooth scrolling effect
+      });
+    });
+
+    // 3. Previous button ka function
+    prevsButton.addEventListener('click', () => {
+      // Scroll right se peeche ki taraf (negative value)
+      carousel.scrollBy({
+        left: -scrollAmount, // Peeche jaane ke liye negative value
+        behavior: 'smooth'
+      });
+    });
+
+    // Note: Agar aapne `.main-container-2` ki item width mobile par 180px kardi hai,
+    // to aapko media query ya JavaScript mein bhi yeh value dynamically adjust karni padegi.
+    // Filhaal yeh 230px (220px width + 10px gap) par set hai.
   </script>
 
 </body>

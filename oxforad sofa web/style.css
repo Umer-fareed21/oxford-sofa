@@ -1,3 +1,6 @@
+/* _________________________________________________ */
+/* 1. Global Reset and Base Styles */
+/* _________________________________________________ */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +12,14 @@ body {
   background-color: #e6e6e6;
 }
 
+a {
+  text-decoration: none;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+/* _________________________________________________ */
+/* 2. Header and Sticky Navigation (section-1) */
+/* _________________________________________________ */
 header {
   min-height: 100vh;
   width: 100%;
@@ -16,6 +27,7 @@ header {
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  /* Animated background ke liye */
 }
 
 header::after {
@@ -28,47 +40,41 @@ header::after {
 .section-1 {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 20;
+  /* High z-index for sticky header */
   height: 90px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding-top: 10px;
-  transition: 400ms;
+  transition: background-color 400ms;
 }
 
-.section-1.active {
+/* Sticky/Scrolled State */
+.section-1.active,
+.section-1:hover {
   background-color: #e6e6e6 !important;
 }
 
-.section-1.active a {
-  color: #000000 !important;
-}
-
-.section-1.active img {
-  filter: invert(0) !important;
-}
-
-.section-1:hover {
-  background-color: #e6e6e6;
-}
-
+.section-1.active a,
 .section-1:hover a {
   color: #000000 !important;
 }
 
+.section-1.active img,
 .section-1:hover img {
   filter: invert(0) !important;
 }
 
-/* logo */
+/* Logo */
 .nav-container-1 img {
   max-width: 120px;
   width: 100%;
   filter: invert(1);
+  /* Default white */
 }
 
-/* center menu */
+/* Nav links */
 .nav-ul-1 {
   display: flex;
   justify-content: center;
@@ -78,14 +84,14 @@ header::after {
 }
 
 .nav-container-2 .menu ul li a {
-  text-decoration: none;
   font-size: 12px;
   font-weight: 600;
   color: #ffffff;
+  /* Default white */
   letter-spacing: 1px;
 }
 
-/* right menu */
+/* Right Menu */
 .right-menu ul {
   display: flex;
   justify-content: center;
@@ -95,8 +101,8 @@ header::after {
 }
 
 .right-menu ul li a {
-  text-decoration: none;
   color: #ffffff;
+  /* Default white */
   font-size: 12px;
   font-weight: 500;
 }
@@ -105,14 +111,45 @@ header::after {
   max-width: 20px;
   width: 100%;
   filter: invert(1);
+  /* Default white */
 }
 
-/* drop down menu css */
+/* Burger Menu Icon (Desktop Hidden) */
+.burger-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 100;
+}
+
+.burger-icon .line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  /* Default line color */
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  transform-origin: 1px;
+}
+
+
+/* _________________________________________________ */
+/* 3. Dropdown Menu (Mega Menu) */
+/* _________________________________________________ */
+
+
 .dropdown-menu {
   position: absolute;
   left: 0;
   top: 100%;
-  width: 100vw;
+  width: 100%;
   /* full width */
   background: #e6e6e6;
   display: flex;
@@ -125,13 +162,13 @@ header::after {
   z-index: 99;
 }
 
-/* show dropdown on hover */
+/* Show dropdown on hover */
 .dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
 }
 
-/* section styling */
+/* Dropdown Sections */
 .dropdown-section {
   display: flex;
   flex-direction: column;
@@ -157,7 +194,6 @@ header::after {
 }
 
 .dropdown-section ul li a {
-  text-decoration: none;
   color: #111;
   font-size: 14px;
   text-align: left;
@@ -165,21 +201,26 @@ header::after {
 }
 
 .dropdown-section ul li a:hover {
-  opacity: 0.25;
+  opacity: 0.5;
 }
 
 
+/* _________________________________________________ */
+/* 4. Main Content (Sections 1, 2, 3) */
+/* _________________________________________________ */
 
-
-/* main */
-
+/* Section 1 - Product Showcase */
 .main-section-1 {
+  position: relative;
+  /* Arrows ke liye */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   min-height: 500px;
+  padding: 0px 40px;
+  /* Side padding for content */
+  margin: 40px 0;
 }
 
 .main-container-1 {
@@ -191,372 +232,237 @@ header::after {
   gap: 5px;
 }
 
-.main-container-1 h1 {
+.main-container-1 h2 {
   font-size: 24px;
   font-weight: 600;
+  text-align: center;
 }
 
-.main-container-2 p {
+.main-container-1 p {
   font-size: 14.4px;
   font-weight: 300;
+  text-align: center;
 }
 
+/* Product Carousel Wrapper */
 .main-container-2 {
   display: flex;
   justify-content: center;
+  /* Items left se start honge */
   align-items: center;
   max-width: 1200px;
   width: 100%;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  /* Zaroori: Horizontal scroll ke liye */
+  gap: 30px;
   margin-top: 40px;
+
+  /* Carousel Setup */
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 0 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* Scrollbar chhupana */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
+.main-container-2::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Product Item */
 .main-container-2 a {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  text-decoration: none;
   color: #545454;
   font-weight: 700;
   letter-spacing: 1px;
   align-items: center;
+  padding-top: 30px;
+
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  /* Scroll har item par rukega */
+  width: 220px;
 }
 
 .main-container-2 img {
   max-width: 220px;
   width: 100%;
-  max-height: 258.5px;
+  height: 258.5px;
+  object-fit: cover;
   background-color: #cfcaca;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .main-container-2 img:hover {
   opacity: 0.5;
 }
 
-.main-section-2 {
-  background-color: #131313;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.h1-a {
-  display: flex;
-  align-items: flex-end;
-  gap: 30px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
-
-.h1-a h1 {
-  color: #fff;
-}
-
-.h1-a a {
-  color: #999;
-  font-size: 14px;
-
-}
-
-.outer-wrapper {
-  width: 80%;
-  margin: 50px auto;
-}
-
-.s-wrap {
-  width: 100%;
-  margin-bottom: 50px;
-  padding-bottom: 55%;
-  position: relative;
-  border: 4px solid #fff;
-  background-color: #efefe8;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.s-wrap>input {
+/* Carousel Navigation Arrows */
+.product-nav-arrow {
   display: none;
-}
-
-.s-wrap .s-content {
-  margin: 0;
-  padding: 0;
+  /* By default hidden, only for desktop JS use */
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 500%;
-  height: 100%;
-  font-size: 0;
-  list-style: none;
-  transition: transform 1s;
-}
-
-.s-wrap .s-item {
-  display: inline-block;
-  width: 20%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.s-wrap .s-item-1 {
-  background-image: url("images/bg-4.jpg");
-}
-
-.s-wrap .s-item-2 {
-  background-image: url("images/bg-5.jpg");
-}
-
-.s-wrap .s-item-3 {
-  background-image: url("images/bg-6.jpg");
-}
-
-.s-wrap .s-item-4 {
-  background-image: url("images/bg-7.jpg");
-}
-
-.s-wrap .s-item-5 {
-  background-image: url("images/bg-8.jpg");
-}
-
-.s-type-1 .s-control {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  text-align: center;
-  transform: translateX(-50%);
-  transition-timing-function: ease-out;
-}
-
-.s-type-1 .s-control>label[class^=s-c-] {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 10px;
-  border-radius: 50%;
-  border: 1px solid #999;
-  background-color: #efefe8;
-  cursor: pointer;
-}
-
-.s-type-1 .s-nav label {
-  display: none;
-  position: absolute;
-  top: 50%;
-  padding: 5px 10px;
+  /* top: 50%; <-- Yeh main-container-2 ke center mein aana chahiye */
+  top: 60%;
   transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
   cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  transition: background 0.3s;
+  border-radius: 50%;
 }
 
-.s-type-1 .s-nav label::before,
-.s-type-1 .s-nav label::after {
-  content: "";
-  display: block;
-  width: 8px;
-  height: 24px;
-  background-color: #fff;
+.product-nav-arrow:hover {
+  background: rgba(0, 0, 0, 0.9);
 }
 
-.s-type-1 .s-nav label::before {
-  margin-bottom: -12px;
-}
-
-.s-type-1 .s-nav label.left {
+.prev-item {
   left: 20px;
 }
 
-.s-type-1 .s-nav label.left::before {
-  transform: rotate(45deg);
-}
-
-.s-type-1 .s-nav label.left::after {
-  transform: rotate(-45deg);
-}
-
-.s-type-1 .s-nav label.right {
+.next-item {
   right: 20px;
 }
 
-.s-type-1 .s-nav label.right::before {
-  transform: rotate(-45deg);
+
+/* Section 2 - Full-Width Slider */
+.modern-full-width-slider {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  margin: 40px 0;
 }
 
-.s-type-1 .s-nav label.right::after {
-  transform: rotate(45deg);
-}
-
-.s-type-1 #s-1:checked~.s-content {
-  transform: translateX(0%);
-}
-
-.s-type-1 #s-1:checked~.s-control .s-c-1 {
-  background-color: #333;
-}
-
-.s-type-1 #s-1:checked~.s-nav .s-nav-1 {
-  display: block;
-}
-
-.s-type-1 #s-2:checked~.s-content {
-  transform: translateX(-20%);
-}
-
-.s-type-1 #s-2:checked~.s-control .s-c-2 {
-  background-color: #333;
-}
-
-.s-type-1 #s-2:checked~.s-nav .s-nav-2 {
-  display: block;
-}
-
-.s-type-1 #s-3:checked~.s-content {
-  transform: translateX(-40%);
-}
-
-.s-type-1 #s-3:checked~.s-control .s-c-3 {
-  background-color: #333;
-}
-
-.s-type-1 #s-3:checked~.s-nav .s-nav-3 {
-  display: block;
-}
-
-.s-type-1 #s-4:checked~.s-content {
-  transform: translateX(-60%);
-}
-
-.s-type-1 #s-4:checked~.s-control .s-c-4 {
-  background-color: #333;
-}
-
-.s-type-1 #s-4:checked~.s-nav .s-nav-4 {
-  display: block;
-}
-
-.s-type-1 #s-5:checked~.s-content {
-  transform: translateX(-80%);
-}
-
-.s-type-1 #s-5:checked~.s-control .s-c-5 {
-  background-color: #333;
-}
-
-.s-type-1 #s-5:checked~.s-nav .s-nav-5 {
-  display: block;
-}
-
-.s-type-2 .s-content {
-  animation: slider-animation 50s ease-in-out infinite;
-}
-
-.s-type-2 .s-content:hover {
-  animation-play-state: paused;
-}
-
-@keyframes slider-animation {
-
-  0%,
-  7% {
-    transform: translateX(0%);
-  }
-
-  12.5%,
-  19.5% {
-    transform: translateX(-20%);
-  }
-
-  25%,
-  32% {
-    transform: translateX(-40%);
-  }
-
-  37.5%,
-  44.5% {
-    transform: translateX(-60%);
-  }
-
-  50%,
-  57% {
-    transform: translateX(-80%);
-  }
-
-  62.5%,
-  69.5% {
-    transform: translateX(-60%);
-  }
-
-  75%,
-  82% {
-    transform: translateX(-40%);
-  }
-
-  87.5%,
-  94.5% {
-    transform: translateX(-20%);
-  }
-}
-
-.s-type-3 .left-control,
-.s-type-3 .right-control {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
+.slider-wrapper {
+  display: flex;
   height: 100%;
-  width: 60px;
-  background-color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+  width: 400%;
+  transition: transform 0.7s ease-in-out;
 }
 
-.s-type-3 .right-control {
-  left: auto;
-  right: 0;
-}
-
-.main-section-3 {
-  padding-bottom: 100px;
-  background-color: #796048;
-}
-
-.main-sec-3-bg-img {
-  height: 645px;
-  background-image: url(./images/bg-9.jpg);
+.slider-item {
+  width: 25%;
+  flex-shrink: 0;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
-.main-sec-3-con {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.slider-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-.main-sec-3-con h1 {
-  font-family: 'HenryTrial';
+.caption {
+  z-index: 10;
   color: #fff;
-  font-size: 50px;
-  font-weight: 300;
-  letter-spacing: 1.5px;
-}
-
-.main-sec-3-con a {
-  margin-top: 120px;
-  text-decoration: none;
-  font-size: 13px;
-  font-family: "Manrope", sans-serif;
-  letter-spacing: 1.5px;
-  color: #fff;
-  width: 300px;
   text-align: center;
-  border: 1px solid #fff;
-  line-height: 54px;
-  background: #ffffff0f;
+  max-width: 80%;
+}
+
+.caption h2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.caption p {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.slider-btn-a {
+  display: inline-block;
+  padding: 12px 30px;
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.slider-btn-a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Navigation Arrows (Full Slider) */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 15px 18px;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 20;
+  border-radius: 50%;
+}
+
+.nav-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.prev-slide {
+  left: 20px;
+}
+
+.next-slide {
+  right: 20px;
+}
+
+/* Navigation Dots (Full Slider) */
+.nav-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background-color: #fff;
+  transform: scale(1.2);
+}
+
+
+/* Section 3 - Archives and Bespoke */
+.main-section-3 {
+  padding-bottom: 100px;
+  background-color: #796048;
 }
 
 .main-sec-3-sec-2 {
@@ -574,6 +480,8 @@ header::after {
 .main-s3-s2-s1 img {
   max-width: 505px;
   width: 100%;
+  height: auto;
+  /* Zaroori */
 }
 
 .text-box {
@@ -587,7 +495,6 @@ header::after {
 .text-box h1 {
   color: #ffffff;
   font-size: 26px;
-  font-family: "Manrope", sans-serif;
   font-weight: 600;
   letter-spacing: 0.05em;
   margin-top: 30px;
@@ -606,18 +513,18 @@ header::after {
   padding: 15px 0;
   border: 1px solid #fff;
   text-align: center;
-  text-decoration: none;
   color: #ffffff;
   letter-spacing: 1px;
   font-size: 13px;
 }
 
 .text-box a:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
-
-/* footer */
+/* _________________________________________________ */
+/* 5. Footer */
+/* _________________________________________________ */
 footer {
   background-color: #131313;
 }
@@ -635,10 +542,15 @@ footer {
   filter: invert(1);
 }
 
-.foot-con-1 h3,
+.foot-con-2,
+.foot-con-3,
+.foot-con-5 {
+  display: flex;
+  flex-direction: column;
+}
+
 .foot-con-2 h3,
 .foot-con-3 h3,
-.foot-con-4 h3,
 .foot-con-5 h3 {
   font-size: 13px;
   color: #e6e6e6;
@@ -647,51 +559,16 @@ footer {
   letter-spacing: 0.06em;
 }
 
-.foot-con-1 p {
-  font-size: 10px;
-  color: #999999;
-  margin-bottom: 12px;
-}
-
-.foot-con-1 a {
-  padding: 10px 80px;
-  border: 0.25px solid #999999;
-  font-size: 10px;
-  text-decoration: none;
-  color: #999999;
-  text-align: center;
-  margin-top: 20px;
-  transition: 500ms;
-}
-
-.foot-con-1 a:hover {
-  color: #ffffff;
-  border: 1px solid #ffffff;
-}
-
-.foot-con-1,
-.foot-con-2,
-.foot-con-3,
-.foot-con-4,
-.foot-con-5 {
-  display: flex;
-  flex-direction: column;
-}
-
 .foot-con-2 a,
 .foot-con-3 a,
-.foot-con-4 a,
 .foot-con-5 a {
   font-size: 11px;
   color: #999999;
   margin-bottom: 12px;
-  text-decoration: none;
-  transition: 500ms;
 }
 
 .foot-con-2 a:hover,
 .foot-con-3 a:hover,
-.foot-con-4 a:hover,
 .foot-con-5 a:hover {
   color: #ffffff;
 }
@@ -703,11 +580,14 @@ footer {
 }
 
 .social-media img {
+  /* Filters ko simplified kar diya */
   filter: invert(57%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(60%) contrast(90%);
 }
 
 .foot-sec-2 {
   padding: 0px 90px 30px 90px;
+  border-top: 1px solid #333;
+  /* Visual separation ke liye */
 }
 
 .foot-sec-2-con {
@@ -716,6 +596,7 @@ footer {
   font-size: 10px;
   color: #545454;
   gap: 6px;
+  padding-top: 20px;
 }
 
 .foot-sec-2-con-p3 {
@@ -723,276 +604,254 @@ footer {
 }
 
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
-  .main-sec-3-sec-2 {
-    flex-direction: column;
-    align-items: center;
-  }
+/* _________________________________________________ */
+/* 6. Media Queries (Responsive Design) */
+/* _________________________________________________ */
 
-  .main-s3-s2-s1 img {
-    width: 250%;
-  }
-
-  .main-s3-s2-s1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .text-box {
-    width: 200%;
-  }
-
-  .outer-wrapper {
-    width: 90%;
-  }
-
-  .s-wrap {
-    min-height: 300px;
-    height: 100%;
-  }
-
-  .dropdown-menu {
-    gap: 30px;
-    justify-content: center;
-  }
-}
-
-
-@media screen and (min-width: 320px) and (max-width: 600px) {
-  .nav-container-2 .menu ul li a {
-    font-size: 12px;
-  }
-
-  .right-menu ul {
-    gap: 10px;
-    align-items: center;
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 425px) {
-  .right-menu ul li a img {
-    max-width: 18px;
-  }
-
-  .nav-container-1 img {
-    max-width: 100px;
+/* 🖥️ Desktop Carousel Arrows (769px and up) */
+@media (max-width: 769px) {
+  .product-nav-arrow {
+    display: block;
+    /* Arrows sirf desktop par JS se control honge */
   }
 
   .main-container-2 {
-    gap: 30px;
-  }
-
-  .text-box a {
-    width: 140px;
-    padding: 8px 0px;
-  }
-
-  .text-box p {
-    font-size: 13px;
-  }
-
-  .main-container-2 img {
-    max-width: 150px;
-    width: 100%;
-  }
-
-  .main-section-1 {
-    text-align: center;
-  }
-
-  .main-section-1 p {
-    font-size: 14px;
-  }
-
-  .main-section-1 h2 {
-    font-size: 20px;
-  }
-
-  .foot-sec-1 {
-    gap: 10px;
-    text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 375px) {
-  .nav-container-1 img {
-    max-width: 80px;
-  }
-}
+/* 📱 Tablet/Mobile (Max Width 1024px) */
+@media (max-width: 1024px) {
 
-@media screen and (min-width: 320px) and (max-width: 1024px) {
+  /* Section 1 - Adjustments */
   .main-section-1 {
-    margin: 40px 0px;
-    padding: 0px 40px;
+    padding: 0 10px;
+  }
+
+  .main-container-2 {
+    gap: 20px;
+    padding: 0 15px;
   }
 
   .main-container-2 a {
-    padding-top: 30px;
+    width: 200px;
+  }
+
+  .main-container-2 img {
+    height: 200px;
+  }
+
+  /* Section 3 - Archives/Bespoke */
+  .main-sec-3-sec-2 {
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px 0px 20px;
+    gap: 40px;
+  }
+
+  .main-s3-s2-s1 {
+    max-width: 90%;
+  }
+
+  .text-box {
+    max-width: 100%;
+  }
+
+  /* Dropdown menu adjustment */
+  .dropdown-menu {
+    padding: 40px 20px;
+    gap: 30px;
   }
 }
 
 
-
-
-
-/* --- BURGER MENU STYLING --- */
-/* Burger Icon ki basic styling */
-.burger-icon {
-  display: none;
-  /* Default mein chhupa rahega */
-  flex-direction: column;
-  justify-content: space-around;
-  width: 25px;
-  height: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 100;
-  /* Sabse upar */
-}
-
-.burger-icon .line {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: #000;
-  /* Icon ka default color */
-  border-radius: 10px;
-  transition: all 0.3s linear;
-  transform-origin: 1px;
-}
-
-/* Burger Icon active hone par X mein badalna */
-.burger-icon.active .line:nth-child(1) {
-  transform: rotate(45deg);
-  background: #000000;
-  /* Active hone par color */
-}
-
-.burger-icon.active .line:nth-child(2) {
-  opacity: 0;
-}
-
-.burger-icon.active .line:nth-child(3) {
-  transform: rotate(-45deg);
-  background: #000000;
-  /* Active hone par color */
-}
-
-
-/* --- MOBILE SPECIFIC STYLES (Jab screen choti ho) --- */
+/* 📱 Mobile Specific (Max Width 768px) */
 @media (max-width: 768px) {
 
-  .burger-icon .line {
-        background: #000000 !important;
-    }
-
-  /* Burger Icon ko chote screen par dikhao */
-  .burger-icon {
-    display: flex;
+  /* Header & Navigation */
+  .section-1 {
+    justify-content: space-between;
+    padding: 0 20px;
   }
 
-  /* nav-container-2 (Main Menu) ko mobile ke liye setup karna */
+  /* Desktop menu hidden */
   .nav-container-2 {
     position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
-    width: 70%;
-    /* Aap apne hisab se width change kar sakte hain */
+    width: 75%;
+    /* Thoda aur jagah */
     background-color: #e6e6e6;
-    /* Aapki demand ke mutabiq background color */
     padding-top: 90px;
     transform: translateX(100%);
-    /* Right side se screen se bahar */
     transition: transform 0.3s ease-in-out;
     z-index: 90;
-    /* Icon se neeche */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    /* 👇 YEH DO LINES ZAROORI HAIN 👇 */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     overflow-x: hidden;
-    /* 👆 YEH DO LINES ZAROORI HAIN 👆 */
   }
 
-  /* Jab menu active ho to slide-in karo */
   .nav-container-2.active {
     transform: translateX(0);
-    /* Screen par wapas laao */
   }
 
-  /* Menu items ko vertical (khada) dikhana */
-  .nav-ul-1 {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding-left: 20px;
-  }
-
-  /* Menu links ka color aur style */
-  .nav-container-2 .menu ul li a {
-    color: #000000;
-    /* Aapki demand ke mutabiq item color */
-    padding: 15px 0;
-    display: block;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-  }
-
-  /* Dropdown menu ko mobile view ke liye adjust karna */
-  .dropdown-menu {
-    position: static;
-    /* Fixed/Absolute se hata kar static kar denge */
-    width: 100%;
-    padding: 10px 20px;
-    background: #f0f0f0;
-    /* Thoda alag shade de sakte hain */
-    box-shadow: none;
-    border-top: none;
-
-    /* Dropdown ko initially chupa do aur JavaScript se dikhao */
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
-  }
-
-  .dropdown-menu.active {
-    max-height: 1200px;
-    /* Ya isse zyada, taake saara content zaroor dikhe */
-    /* Pichle 500px ko 1200px se badal dein */
-
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  /* Zaroori: Mobile mein display flex hata kar block/column kar dein */
-  .dropdown-menu {
-    flex-direction: column;
-    /* Confirm karein yeh set ho */
-    align-items: center;
-    /* Agar zaroori ho */
+  /* Burger Icon */
+  .burger-icon {
     display: flex;
-    /* Active/inactive state se pehle yahan display zaroori hai */
   }
 
-  .dropdown-section {
-    width: 100%;
-    /* Sections ko poori jagah mil jaye */
-    text-align: center;
-    /* Content ko center karne ke liye */
+  .burger-icon .line {
+    background: #000000 !important;
+    /* Active state ya light background ke liye */
   }
 
+  .burger-icon.active .line {
+    background: #000000;
+  }
+
+  /* Right Menu aur Burger Icon ko ek sath */
   .nav-3-burger {
     display: flex;
     align-items: center;
     gap: 15px;
   }
 
-  .section-1 {
+  /* Mobile Nav Links */
+  .nav-ul-1 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding-left: 20px;
+    width: 100%;
+  }
+
+  .nav-container-2 .menu ul li a {
+    color: #000000;
+    padding: 15px 0;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Dropdown in Mobile */
+  .dropdown-menu {
+    position: static;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    padding: 10px 20px;
+    background: #f0f0f0;
+    border: none;
+    box-shadow: none;
+
+    /* JS se control hoga */
+    max-height: 0;
+    visibility: visible;
+    /* opacity/visibility ko JS se chupa dena */
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .dropdown-menu.active {
+    max-height: 1200px;
+  }
+
+  .dropdown-section {
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Section 1 - Product Carousel */
+  .main-container-2 a {
+    width: 180px;
+  }
+
+  .main-container-2 img {
+    max-width: 180px;
+    height: 180px;
+  }
+
+  /* Full-Width Slider */
+  .modern-full-width-slider {
+    height: 50vh;
+  }
+
+  .caption h2 {
+    font-size: 28px;
+  }
+
+  .caption p {
+    font-size: 14px;
+  }
+
+  .nav-arrow {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  /* Footer */
+  .foot-sec-1 {
+    gap: 20px;
+    padding: 40px 20px;
     justify-content: space-between;
-    padding: 0px 20px;
+  }
+
+  .foot-sec-2 {
+    padding: 0 20px 30px 20px;
+  }
+}
+
+/* 📱 Very Small Mobile (Max Width 425px) */
+@media (max-width: 425px) {
+
+  .nav-container-1 img {
+    max-width: 100px;
+  }
+
+  .main-container-1 h2 {
+    font-size: 20px;
+  }
+
+  .main-container-1 p {
+    font-size: 14px;
+  }
+
+  .main-container-2 a {
+    width: 150px;
+  }
+
+  .main-container-2 img {
+    max-width: 150px;
+    height: 150px;
+  }
+
+  .main-sec-3-sec-2 {
+    padding: 40px 15px 0 15px;
+  }
+
+  .main-s3-s2-s1 {
+    max-width: 100%;
+  }
+
+  .text-box h1 {
+    font-size: 22px;
+  }
+
+  .text-box a {
+    width: 160px;
+    padding: 10px 0;
+  }
+
+  .foot-sec-1 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .foot-con-2,
+  .foot-con-3,
+  .foot-con-5 {
+    margin-top: 15px;
   }
 }
