@@ -846,12 +846,13 @@ footer {
 
   .foot-sec-1 {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .foot-con-2,
   .foot-con-3,
   .foot-con-5 {
     margin-top: 15px;
+    align-items: center;
   }
 }
