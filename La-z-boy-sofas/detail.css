@@ -679,6 +679,7 @@ footer {
     /* Burger Icon ko chote screen par dikhao */
     .burger-icon {
         display: flex;
+        margin-right: 10px;
     }
 
     /* nav-container-2 (Main Menu) ko mobile ke liye setup karna */
