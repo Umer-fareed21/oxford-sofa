@@ -1,0 +1,96 @@
+/* Poore page ki default styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Halka gray background */
+    display: flex;
+    justify-content: center; /* Center mein lane ke liye */
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Login box ka container */
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Box ki zyada se zyada chourai */
+    text-align: center;
+}
+
+/* Oxford Sofa Title ki styling */
+h1 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 28px;
+}
+.oxford {
+    color: #5D4037; /* Deep Brown, jo elegance show kare */
+    font-weight: bold;
+}
+p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Input field aur label ki group setting */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Padding aur border ko width mein shamil kare */
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #5D4037; /* Focus hone par border colour badle */
+    outline: none;
+}
+
+/* Login button ki styling */
+.login-btn {
+    width: 100%;
+    background-color: #5D4037;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #4E342E; /* Hover effect */
+}
+
+/* Forgot password link ki styling */
+.forgot-password {
+    display: block;
+    margin-top: 15px;
+    color: #5D4037;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
